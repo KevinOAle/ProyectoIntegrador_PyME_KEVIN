@@ -1,0 +1,44 @@
+============================================================
+ BLOQUE CLIENTES Y LOCALIDADES
+============================================================
+PROVINCIAS               1 ------- N  LOCALIDADES
+LOCALIDADES              1 ------- N  CLIENTES
+TIPOS_CLIENTE            1 ------- N  CLIENTES
+TIPOS_DOCUMENTO          1 ------- N  CLIENTES
+ESTADOS_CLIENTES         1 ------- N  CLIENTES
+
+============================================================
+ BLOQUE USUARIOS
+============================================================
+ROLES                    1 ------- N  USUARIOS
+ESTADOS_USUARIOS         1 ------- N  USUARIOS
+
+============================================================
+ BLOQUE PRODUCTOS
+============================================================
+CATEGORIAS_PRODUCTO      1 ------- N  PRODUCTOS_SERVICIOS
+IMPUESTOS                1 ------- N  PRODUCTOS_SERVICIOS
+
+============================================================
+ BLOQUE FACTURACIÓN (CABECERA)
+============================================================
+CLIENTES                 1 ------- N  FACTURAS
+USUARIOS                 1 ------- N  FACTURAS
+ESTADOS_FACTURA          1 ------- N  FACTURAS
+TIPOS_OPERACION_FACTURA  1 ------- N  FACTURAS
+TIPOS_FACTURA            1 ------- N  FACTURAS
+
+============================================================
+ BLOQUE FACTURACIÓN (EL DETALLE DE LA VENTA)
+============================================================
+FACTURAS                 1 ------- N  DETALLES_FACTURA
+PRODUCTOS_SERVICIOS      1 ------- N  DETALLES_FACTURA
+
+============================================================
+ BLOQUE COMPROBANTES Y MOVIMIENTOS EXTRA
+============================================================
+FACTURAS                 1 ------- N  COMPROBANTES_PAGO
+FORMAS_PAGO              1 ------- N  COMPROBANTES_PAGO
+FACTURAS                 1 ------- N  AUDITORIA_FACTURA
+FACTURAS                 1 ------- N  DESCUENTOS_FACTURA
+FACTURAS                 1 ------- N  RECARGOS_FACTURA
