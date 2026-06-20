@@ -1,3 +1,17 @@
+/*Creacion de la base de datos con if para evitar que se
+de error porque ya existe*/
+
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'BaseDeDatos_PyME')
+BEGIN
+    CREATE DATABASE BaseDeDatos_PyME;
+    PRINT 'Base de datos BaseDeDatos_PyME creada correctamente.';
+END
+ELSE
+BEGIN
+    PRINT 'La base de datos BaseDeDatos_PyME ya existe.';
+END
+GO
+
 /* ============================================================
    SCRIPT COMPLETO - CREACIÓN DE TABLAS
    Proyecto: Gestión de Ventas y Facturación PyME
@@ -8,6 +22,10 @@
 USE BaseDeDatos_PyME;
 GO
 
+/*SET NOCOUNT ON: sirve para optimizar evitando que se envien mensajes como "X filas han sido afectadas" cuando se ejecuta algo
+Utilizamos es sistema de if para evitar duplicados en las tablas por si se ejecuta 2 veces
+uso del begin, end y go: begin y end nos sirve para poner varias instrucciones dentro del if en cada tabla
+El GO, lo usamos para seccionar el script y que se ejecuten de forma independiente, si falla da mensaje*/
 SET NOCOUNT ON;
 GO
 
@@ -20,7 +38,8 @@ BEGIN
     (
         id_provincia INT IDENTITY(1,1) NOT NULL,
         nombre VARCHAR(100) NOT NULL,
-
+        /*El uso de contraint es para garantizar la integridad en los datos,
+        este evita ingresos que sean incorrectos, duplicados o inconsistentes*/
         CONSTRAINT PK_PROVINCIAS PRIMARY KEY (id_provincia),
         CONSTRAINT UQ_PROVINCIAS_nombre UNIQUE (nombre),
         CONSTRAINT CK_PROVINCIAS_nombre_no_vacio CHECK (LEN(LTRIM(RTRIM(nombre))) > 0)
@@ -446,6 +465,7 @@ BEGIN
 
         CONSTRAINT PK_COMPROBANTES_PAGO PRIMARY KEY (id_comprobante_pago),
         CONSTRAINT FK_COMPROBANTES_PAGO_FACTURAS FOREIGN KEY (id_factura) REFERENCES dbo.FACTURAS(id_factura),
+        CONSTRAINT FK_COMPROBANTES_PAGO_FACTURAS UNIQUE (id_factura),
         CONSTRAINT FK_COMPROBANTES_PAGO_FORMAS_PAGO FOREIGN KEY (id_forma_pago) REFERENCES dbo.FORMAS_PAGO(id_forma_pago),
         CONSTRAINT CK_COMPROBANTES_PAGO_monto CHECK (monto > 0)
     );
@@ -525,7 +545,11 @@ GO
 /* ============================================================
    ÍNDICES ÚNICOS FILTRADOS
    Propósito: Evitar duplicados solo entre registros ACTIVOS.
-   Permiten tener nombres repetidos si uno de ellos está inactivo.
+   Permiten tener nombres repetidos si uno de ellos está inactivo,
+   Ej:Si en el pasado se desactiva alguno y mas adelante contratan a
+   alguien diferenete para el control este no sabe que se desactivo,
+   podria intentar ingresar algo nuevo y sin esto le saltaria error,
+   con esta funcion mientras este desactivado se le va a permitir el ingreso.
    ============================================================ */
 
 -- 1. PRODUCTOS_SERVICIOS: No pueden existir dos productos ACTIVOS con el mismo nombre.

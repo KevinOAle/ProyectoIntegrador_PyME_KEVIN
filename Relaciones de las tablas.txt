@@ -37,7 +37,7 @@ PRODUCTOS_SERVICIOS      1 ------- N  DETALLES_FACTURA
 ============================================================
  BLOQUE COMPROBANTES Y MOVIMIENTOS EXTRA
 ============================================================
-FACTURAS                 1 ------- N  COMPROBANTES_PAGO
+FACTURAS                 1 ------- 1  COMPROBANTES_PAGO
 FORMAS_PAGO              1 ------- N  COMPROBANTES_PAGO
 FACTURAS                 1 ------- N  AUDITORIA_FACTURA
 FACTURAS                 1 ------- N  DESCUENTOS_FACTURA
