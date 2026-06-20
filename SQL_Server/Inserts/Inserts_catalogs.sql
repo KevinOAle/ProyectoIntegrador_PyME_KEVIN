@@ -26,7 +26,8 @@ GO
 INSERT INTO dbo.TIPOS_DOCUMENTO (tipo, descripcion)
 VALUES
 ('DNI', 'Documento Nacional de Identidad (persona física)'),
-('CUIT_CUIL', 'Clave Única de Identificación Laboral (personas físicas y jurídicas)'),
+('CUIT', 'Clave Única de Identificación Tributaria (empresas y monotributistas)'),
+('CUIL', 'Clave Única de Identificación Laboral (personas físicas)'),
 ('Pasaporte', 'Pasaporte extranjero');
 GO
 
@@ -360,6 +361,9 @@ GO
    6. PRODUCTOS
    ------------------------------------------------------------ */
 
+/* ------------------------------------------------------------
+   PRODUCTO 1: Electrónica - Mouse Inalámbrico
+   ------------------------------------------------------------ */
 INSERT INTO PRODUCTOS_SERVICIOS (
     id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
 )
@@ -369,6 +373,126 @@ SELECT
     'Mouse Inalámbrico',
     'Mouse óptico, conexión USB, color negro',
     5500.00, 100, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 2: Electrónica - Teclado Mecánico
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Electrónica'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
+    'Teclado Mecánico',
+    'Teclado mecánico RGB, switches azules',
+    12500.00, 50, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 3: Electrónica - Auriculares Bluetooth
+   ------------------------------------------------------------ */
+IF NOT EXISTS (SELECT FROM PRODUCTOS_SERVICIOS WHERE nombre = 'Auriculares Bluetooth')
+BEGIN
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Electrónica'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
+    'Auriculares Bluetooth',
+    'Auriculares inalámbricos, batería 20h, color blanco',
+    8900.00, 30, 1;
+END
+
+/* ------------------------------------------------------------
+   PRODUCTO 4: Indumentaria - Remera Deportiva
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Indumentaria'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
+    'Remera Deportiva',
+    'Remera de algodón, talla M, color blanco',
+    3200.00, 200, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 5: Indumentaria - Pantalón de Vestir
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Indumentaria'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
+    'Pantalón de Vestir',
+    'Pantalón formal, color gris, talle 42',
+    5800.00, 80, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 6: Alimentos - Caja de Chocolates
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Alimentos'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 10.5%'),
+    'Caja de Chocolates',
+    'Chocolates surtidos, 500g',
+    4500.00, 80, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 7: Alimentos - Café Premium 1kg
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Alimentos'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 10.5%'),
+    'Café Premium 1kg',
+    'Café molido, origen colombiano, tueste medio',
+    6200.00, 40, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 8: Hogar - Lámpara de Mesa
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Hogar'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
+    'Lámpara de Mesa',
+    'Lámpara LED, diseño moderno, color negro mate',
+    8900.00, 30, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 9: Hogar - Cuadro Decorativo
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Hogar'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
+    'Cuadro Decorativo',
+    'Cuadro abstracto, marco de madera, 50x70cm',
+    5200.00, 20, 1;
+
+/* ------------------------------------------------------------
+   PRODUCTO 10: Indumentaria - Mochila
+   ------------------------------------------------------------ */
+INSERT INTO PRODUCTOS_SERVICIOS (
+    id_categoria, id_impuesto, nombre, descripcion, precio_unitario_actual, stock_actual, activo
+)
+SELECT
+    (SELECT id_categoria FROM CATEGORIAS_PRODUCTO WHERE nombre = 'Indumentaria'),
+    (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
+    'Mochila Ejecutiva',
+    'Mochila para notebook, cuero sintético, color negro',
+    11200.00, 25, 1;
 
 GO
 

@@ -245,7 +245,6 @@ BEGIN
         activo BIT NOT NULL CONSTRAINT DF_FORMAS_PAGO_activo DEFAULT (1),
 
         CONSTRAINT PK_FORMAS_PAGO PRIMARY KEY (id_forma_pago),
-        CONSTRAINT UQ_FORMAS_PAGO_forma_pago UNIQUE (forma_pago),
         CONSTRAINT CK_FORMAS_PAGO_forma_pago_no_vacio CHECK (LEN(LTRIM(RTRIM(forma_pago))) > 0)
     );
     PRINT 'Tabla FORMAS_PAGO creada.';
@@ -322,7 +321,6 @@ BEGIN
         activo BIT NOT NULL CONSTRAINT DF_CATEGORIAS_PRODUCTO_activo DEFAULT (1),
 
         CONSTRAINT PK_CATEGORIAS_PRODUCTO PRIMARY KEY (id_categoria),
-        CONSTRAINT UQ_CATEGORIAS_PRODUCTO_nombre UNIQUE (nombre),
         CONSTRAINT CK_CATEGORIAS_PRODUCTO_nombre_no_vacio CHECK (LEN(LTRIM(RTRIM(nombre))) > 0)
     );
     PRINT 'Tabla CATEGORIAS_PRODUCTO creada.';
@@ -465,7 +463,7 @@ BEGIN
 
         CONSTRAINT PK_COMPROBANTES_PAGO PRIMARY KEY (id_comprobante_pago),
         CONSTRAINT FK_COMPROBANTES_PAGO_FACTURAS FOREIGN KEY (id_factura) REFERENCES dbo.FACTURAS(id_factura),
-        CONSTRAINT FK_COMPROBANTES_PAGO_FACTURAS UNIQUE (id_factura),
+        CONSTRAINT UQ_COMPROBANTES_PAGO_FACTURAS UNIQUE (id_factura),
         CONSTRAINT FK_COMPROBANTES_PAGO_FORMAS_PAGO FOREIGN KEY (id_forma_pago) REFERENCES dbo.FORMAS_PAGO(id_forma_pago),
         CONSTRAINT CK_COMPROBANTES_PAGO_monto CHECK (monto > 0)
     );
@@ -560,7 +558,7 @@ ON PRODUCTOS_SERVICIOS(nombre) WHERE activo = 1;
 
 -- 2. CATEGORIAS_PRODUCTO: No pueden existir dos categorías ACTIVAS con el mismo nombre.
 --    Útil para mantener limpias las familias de productos.
-CREATE UNIQUE NONCLUSTERED INDEX IX_CATEGORIAS_nombre_activo
+CREATE UNIQUE NONCLUSTERED INDEX IX_CATEGORIAS_nombre_activo 
 ON CATEGORIAS_PRODUCTO(nombre) WHERE activo = 1;
 
 -- 3. FORMAS_PAGO: No pueden existir dos formas de pago ACTIVAS con el mismo nombre.
