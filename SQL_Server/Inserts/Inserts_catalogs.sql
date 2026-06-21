@@ -90,19 +90,19 @@ GO
 /* ------------------------------------------------------------
    ESTADOS_USUARIOS
    ------------------------------------------------------------ */
-IF NOT EXISTS (SELECT 1 FROM ESTADOS_USUARIOS WHERE estado = '')
+IF NOT EXISTS (SELECT 1 FROM ESTADOS_USUARIOS WHERE estado = 'Activo')
 BEGIN
 INSERT INTO dbo.ESTADOS_USUARIOS (estado, descripcion)
 VALUES ('Activo', 'Usuario habilitado')
 END;
 
-IF NOT EXISTS (SELECT 1 FROM ESTADOS_USUARIOS WHERE estado = '')
+IF NOT EXISTS (SELECT 1 FROM ESTADOS_USUARIOS WHERE estado = 'Bloqueado')
 BEGIN
 INSERT INTO dbo.ESTADOS_USUARIOS (estado, descripcion)
 VALUES ('Bloqueado', 'Usuario bloqueado temporalmente')
 END;
 
-IF NOT EXISTS (SELECT 1 FROM ESTADOS_USUARIOS WHERE estado = '')
+IF NOT EXISTS (SELECT 1 FROM ESTADOS_USUARIOS WHERE estado = 'Inactivo')
 BEGIN
 INSERT INTO dbo.ESTADOS_USUARIOS (estado, descripcion)
 VALUES ('Inactivo', 'Usuario dado de baja')
@@ -112,19 +112,19 @@ GO
 /* ------------------------------------------------------------
    ESTADOS_CLIENTES
    ------------------------------------------------------------ */
-IF NOT EXISTS (SELECT 1 FROM ESTADOS_CLIENTES WHERE estado = '')
+IF NOT EXISTS (SELECT 1 FROM ESTADOS_CLIENTES WHERE estado = 'Activo')
 BEGIN
 INSERT INTO dbo.ESTADOS_CLIENTES (estado, descripcion)
 VALUES ('Activo', 'Cliente habilitado para comprar')
 END;
 
-IF NOT EXISTS (SELECT 1 FROM ESTADOS_CLIENTES WHERE estado = '')
+IF NOT EXISTS (SELECT 1 FROM ESTADOS_CLIENTES WHERE estado = 'Moroso')
 BEGIN
 INSERT INTO dbo.ESTADOS_CLIENTES (estado, descripcion)
 VALUES ('Moroso', 'Tiene deudas pendientes')
 END;
 
-IF NOT EXISTS (SELECT 1 FROM ESTADOS_CLIENTES WHERE estado = '')
+IF NOT EXISTS (SELECT 1 FROM ESTADOS_CLIENTES WHERE estado = 'Inactivo')
 BEGIN
 INSERT INTO dbo.ESTADOS_CLIENTES (estado, descripcion)
 VALUES ('Inactivo', 'Cliente dado de baja')
@@ -512,7 +512,7 @@ GO
    ------------------------------------------------------------ */
 
 /*EMPRESA 1*/
-IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = '30123456789')
+IF NOT EXISTS (SELECT 1 FROM CLIENTES WHERE numero_documento = '30123456789')
 BEGIN
 INSERT INTO CLIENTES (
     id_localidad, id_tipo_cliente, id_tipo_documento, id_estado_cliente,
@@ -527,7 +527,7 @@ SELECT
 END;
 
 /*EMPRESA 2*/
-IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = '30234567890')
+IF NOT EXISTS (SELECT 1 FROM CLIENTES WHERE numero_documento = '30234567890')
 BEGIN
 INSERT INTO CLIENTES (
     id_localidad, id_tipo_cliente, id_tipo_documento, id_estado_cliente,
@@ -542,7 +542,7 @@ SELECT
 END;
 
 /*EMPRESA 3*/
-IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = '30345678901')
+IF NOT EXISTS (SELECT 1 FROM CLIENTES WHERE numero_documento = '30345678901')
 BEGIN
 INSERT INTO CLIENTES (
     id_localidad, id_tipo_cliente, id_tipo_documento, id_estado_cliente,
@@ -557,7 +557,7 @@ SELECT
 END;
 
 /*EMPRESA 4*/
-IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = '30456789012')
+IF NOT EXISTS (SELECT 1 FROM CLIENTES WHERE numero_documento = '30456789012')
 BEGIN
 INSERT INTO CLIENTES (
     id_localidad, id_tipo_cliente, id_tipo_documento, id_estado_cliente,
@@ -601,7 +601,7 @@ SELECT
     'admin', 'admin123', 'Administrador del Sistema', 'admin@gmail.com';
 END;
 
-IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = 'vandedor1')
+IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = 'vendedor1')
 BEGIN
 INSERT INTO USUARIOS (
     id_rol, id_estado_usuario, nombre_usuario, clave_hash, nombre_completo, email
@@ -612,7 +612,7 @@ SELECT
     'vendedor1', 'vendedor123', 'Carlos Vendedor', 'carlos.vendedor@gmail.com';
 END;
 
-IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = 'vandedor2')
+IF NOT EXISTS (SELECT 1 FROM USUARIOS WHERE nombre_usuario = 'vendedor2')
 BEGIN
 INSERT INTO USUARIOS (
     id_rol, id_estado_usuario, nombre_usuario, clave_hash, nombre_completo, email
