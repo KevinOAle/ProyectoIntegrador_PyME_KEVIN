@@ -3,7 +3,7 @@ GO
 -- 1. Total facturado en un mes (Facturas pagadas)
 SELECT SUM(total) AS TotalFacturado
 FROM FACTURAS
-WHERE YEAR(fecha_emision) = 2025 AND MONTH(fecha_emision) = 5
+WHERE YEAR(fecha_emision) = 2025 AND MONTH(fecha_emision) = 3
 AND id_estado_factura = (SELECT id_estado_factura FROM ESTADOS_FACTURA WHERE estado = 'Pagada');;
 
 GO

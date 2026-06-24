@@ -14,9 +14,7 @@ BEGIN
         (SELECT id_impuesto FROM IMPUESTOS WHERE impuesto = 'IVA 21%'),
         'Pendrive 64GB',
         'USB 3.0, color negro',
-        3500.00,
-        50,
-        1;
+        3500.00, 50, 1;
     PRINT 'Producto agregado.';
 END;
 GO
@@ -32,7 +30,7 @@ WHERE nombre = 'Pendrive 64GB';
 PRINT 'Stock actualizado.';
 GO
 
--- 4. DELETE (lógico): Desactivar un producto (no se borra, se inactiva)
+-- 4. DELETE: Desactivar un producto (no se borra, se inactiva)
 UPDATE PRODUCTOS_SERVICIOS
 SET activo = 0
 WHERE nombre = 'Pendrive 64GB';
