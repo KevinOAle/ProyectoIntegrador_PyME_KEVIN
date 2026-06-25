@@ -1,0 +1,212 @@
+ANALISIS DE LA PROBLEMATICA - PyME GENERICA
+===========================================
+
+Proyecto: ProyectoIntegrador_PyME_MAURO
+Asignatura: Analisis de Sistemas / Bases de Datos
+Tema: Gestion administrativa y comercial de una PyME generica
+Base de datos propuesta: BaseDeDatos_PyME
+Motor: SQL Server
+
+
+1. Descripcion general de la organizacion
+-----------------------------------------
+
+La organizacion analizada es una PyME generica que realiza actividades comerciales vinculadas
+a la venta de productos y/o prestacion de servicios. Como parte de su operatoria diaria,
+la empresa necesita registrar clientes, administrar productos y servicios, emitir facturas,
+registrar pagos, consultar informacion comercial y mantener un control basico sobre sus
+operaciones administrativas.
+
+Actualmente, este tipo de organizacion suele manejar informacion dispersa en planillas,
+documentos sueltos, registros manuales o sistemas poco integrados. Esto provoca dificultades
+para consultar datos confiables, controlar facturas, verificar pagos, analizar ventas y
+mantener actualizada la informacion de clientes y productos.
+
+
+2. Situacion actual
+-------------------
+
+La PyME presenta una gestion administrativa fragmentada. Los datos de clientes, productos,
+servicios, facturas y pagos no siempre se encuentran centralizados en una unica base de datos.
+Esto genera duplicacion de informacion, errores de carga, perdida de tiempo en busquedas y
+dificultades para obtener reportes claros.
+
+Las tareas habituales, como registrar un cliente, cargar un producto, emitir una factura,
+consultar ventas o verificar si una factura fue pagada, dependen de procesos manuales o poco
+automatizados. Esta situacion aumenta la posibilidad de inconsistencias y dificulta el control
+interno de la organizacion.
+
+Ademas, la falta de una estructura formal de datos impide aplicar controles adecuados sobre
+la informacion. Por ejemplo, pueden existir clientes duplicados, productos sin categoria,
+facturas sin estado claro, pagos no vinculados correctamente o importes mal calculados.
+
+
+3. Problema principal
+---------------------
+
+El problema principal es la falta de un sistema organizado y centralizado para gestionar la
+informacion administrativa y comercial de la PyME.
+
+Esta ausencia dificulta el control de clientes, productos, servicios, facturacion, pagos,
+descuentos, recargos y auditoria de operaciones. Como consecuencia, la empresa pierde eficiencia,
+aumenta el riesgo de errores y no cuenta con informacion confiable para la toma de decisiones.
+
+
+4. Problemas especificos detectados
+-----------------------------------
+
+1) Informacion dispersa
+   Los datos de clientes, productos, facturas y pagos pueden encontrarse en diferentes archivos
+   o registros, lo que dificulta su consulta y mantenimiento.
+
+2) Duplicacion de datos
+   Al no existir controles centralizados, puede repetirse informacion de clientes, productos
+   o comprobantes.
+
+3) Falta de integridad en la informacion
+   Las facturas pueden no estar correctamente vinculadas con clientes, usuarios, productos,
+   estados o pagos.
+
+4) Dificultad para consultar informacion
+   Obtener reportes sobre ventas, facturas, pagos o productos requiere mucho tiempo si la
+   informacion no esta estructurada.
+
+5) Riesgo de errores administrativos
+   La carga manual de datos aumenta la posibilidad de errores en importes, fechas, estados,
+   descuentos o recargos.
+
+6) Falta de control sobre estados
+   La empresa necesita distinguir clientes activos, facturas pagadas, pendientes o anuladas,
+   usuarios activos y productos disponibles.
+
+7) Falta de trazabilidad
+   Sin auditoria, resulta dificil saber que usuario realizo determinadas acciones sobre las
+   facturas u operaciones del sistema.
+
+8) Dificultad para escalar
+   A medida que la PyME crece, la gestion manual o dispersa se vuelve insuficiente para sostener
+   la operatoria diaria.
+
+
+5. Consecuencias para la organizacion
+-------------------------------------
+
+La problematica detectada impacta directamente en la eficiencia administrativa de la PyME.
+
+Las principales consecuencias son:
+
+- Perdida de tiempo en la busqueda de informacion.
+- Mayor probabilidad de errores en la carga y modificacion de datos.
+- Dificultad para controlar facturas emitidas y pagos realizados.
+- Falta de informacion confiable para tomar decisiones.
+- Problemas para mantener actualizados los datos de clientes y productos.
+- Riesgo de duplicacion o inconsistencia de registros.
+- Menor capacidad para generar reportes comerciales y administrativos.
+- Falta de trazabilidad sobre operaciones importantes.
+
+
+6. Necesidad detectada
+----------------------
+
+La PyME necesita implementar una base de datos relacional que centralice y organice la informacion
+principal de la empresa.
+
+Esta base de datos debe permitir:
+
+- Registrar clientes.
+- Clasificar clientes por tipo, documento, estado y localidad.
+- Registrar productos y servicios.
+- Asociar productos y servicios a categorias e impuestos.
+- Emitir y consultar facturas.
+- Registrar detalles de facturacion.
+- Registrar pagos asociados a facturas.
+- Administrar descuentos y recargos.
+- Controlar usuarios y roles.
+- Mantener trazabilidad mediante auditoria.
+- Consultar informacion mediante reportes.
+
+
+7. Propuesta general de solucion
+--------------------------------
+
+Como respuesta a la problematica, se propone disenar e implementar una base de datos relacional
+en SQL Server denominada BaseDeDatos_PyME.
+
+La solucion busca centralizar la informacion critica de la PyME y estructurarla mediante tablas,
+relaciones, claves primarias, claves foraneas y restricciones de integridad.
+
+El modelo propuesto contempla las siguientes areas:
+
+- Gestion de clientes.
+- Gestion de productos y servicios.
+- Gestion de facturacion.
+- Gestion de pagos.
+- Gestion de descuentos y recargos.
+- Gestion de usuarios.
+- Auditoria de operaciones.
+- Consultas y reportes.
+
+Esta solucion permite reducir errores, mejorar la disponibilidad de la informacion, facilitar
+consultas y brindar una base solida para futuras ampliaciones del sistema.
+
+
+8. Alcance inicial del sistema
+------------------------------
+
+El alcance inicial del sistema se limita a la gestion administrativa y comercial basica de la
+PyME. No se incluye el desarrollo de una interfaz grafica ni una aplicacion completa, sino el
+diseno e implementacion de la base de datos y los scripts SQL necesarios para demostrar su
+funcionamiento.
+
+El sistema contempla:
+
+- Modelo de datos.
+- Creacion de base de datos.
+- Creacion de tablas.
+- Restricciones de integridad.
+- Insercion de datos de prueba.
+- Operaciones CRUD.
+- Consultas y reportes.
+- Funciones y subconsultas.
+- Procedimientos almacenados.
+- Pruebas y optimizacion.
+
+No contempla en esta etapa:
+
+- Interfaz de usuario.
+- Gestion contable avanzada.
+- Integracion con AFIP u otros organismos externos.
+- Control de stock avanzado.
+- Gestion de proveedores.
+- Modulo de compras.
+- Gestion de empleados o liquidacion de sueldos.
+
+
+9. Beneficios esperados
+-----------------------
+
+La implementacion de la base de datos permitira a la PyME:
+
+- Centralizar la informacion.
+- Reducir errores de carga.
+- Evitar duplicacion de datos.
+- Mejorar el control de facturas y pagos.
+- Obtener consultas y reportes con mayor rapidez.
+- Mantener integridad entre clientes, productos, facturas y pagos.
+- Mejorar la trazabilidad de operaciones.
+- Facilitar futuras ampliaciones del sistema.
+- Contar con una estructura clara para la toma de decisiones.
+
+
+10. Conclusion
+--------------
+
+La problematica principal de la PyME se relaciona con la falta de organizacion, centralizacion
+e integridad de la informacion administrativa y comercial.
+
+El desarrollo de una base de datos relacional en SQL Server permite resolver esta necesidad,
+ya que proporciona una estructura ordenada para almacenar, relacionar, consultar y controlar
+los datos principales de la organizacion.
+
+La solucion propuesta constituye una base tecnica adecuada para mejorar la gestion interna de
+la PyME y servir como punto de partida para un sistema de informacion mas completo en el futuro.

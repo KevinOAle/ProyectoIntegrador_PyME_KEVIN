@@ -1,0 +1,175 @@
+REQUERIMIENTOS FUNCIONALES - PyME GENERICA
+==========================================
+
+Proyecto: ProyectoIntegrador_PyME_MAURO
+Base de datos: BaseDeDatos_PyME
+Motor: SQL Server
+
+
+1. Objetivo del documento
+-------------------------
+
+Este documento define los requerimientos funcionales del sistema de gestion administrativa y
+comercial de una PyME generica. Los requerimientos se derivan de la problematica detectada y
+son coherentes con el modelo de datos implementado en SQL Server.
+
+
+2. Requerimientos funcionales
+-----------------------------
+
+RF-01 - Registrar clientes
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir registrar clientes de tipo persona fisica o juridica, almacenando sus
+datos identificatorios, datos de contacto, localidad, tipo de cliente, tipo de documento y estado.
+Tablas relacionadas:
+CLIENTES, TIPOS_CLIENTE, TIPOS_DOCUMENTO, ESTADOS_CLIENTES, LOCALIDADES.
+
+RF-02 - Consultar clientes
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir consultar clientes registrados, filtrando o visualizando informacion
+relevante como nombre, apellido, razon social, documento, localidad, tipo y estado.
+Tablas relacionadas:
+CLIENTES, TIPOS_CLIENTE, TIPOS_DOCUMENTO, ESTADOS_CLIENTES, LOCALIDADES, PROVINCIAS.
+
+RF-03 - Modificar datos de clientes
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir actualizar datos de clientes cuando existan cambios en informacion de
+contacto, direccion, estado o clasificacion.
+Tablas relacionadas:
+CLIENTES.
+
+RF-04 - Dar de baja o inactivar clientes
+Prioridad: Media
+Descripcion:
+El sistema debe permitir controlar el estado de los clientes para distinguir clientes activos,
+inactivos u otros estados definidos por la organizacion.
+Tablas relacionadas:
+CLIENTES, ESTADOS_CLIENTES.
+
+RF-05 - Registrar productos y servicios
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir registrar productos y servicios con nombre, descripcion, categoria,
+impuesto asociado, precio unitario actual, stock actual y estado activo/inactivo.
+Tablas relacionadas:
+PRODUCTOS_SERVICIOS, CATEGORIAS_PRODUCTO, IMPUESTOS.
+
+RF-06 - Consultar productos y servicios
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir consultar productos y servicios disponibles, sus precios, categorias,
+impuestos, stock y estado.
+Tablas relacionadas:
+PRODUCTOS_SERVICIOS, CATEGORIAS_PRODUCTO, IMPUESTOS.
+
+RF-07 - Modificar productos y servicios
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir actualizar datos de productos o servicios, como precio, descripcion,
+categoria, impuesto, stock o estado activo.
+Tablas relacionadas:
+PRODUCTOS_SERVICIOS.
+
+RF-08 - Emitir facturas
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir registrar facturas asociadas a un cliente, un usuario, un estado, un tipo
+de factura y un tipo de operacion. Tambien debe almacenar numero de factura, fecha de emision,
+totales, observaciones y detalle de productos o servicios facturados.
+Tablas relacionadas:
+FACTURAS, DETALLES_FACTURA, CLIENTES, USUARIOS, ESTADOS_FACTURA, TIPOS_FACTURA,
+TIPOS_OPERACION_FACTURA, PRODUCTOS_SERVICIOS.
+
+RF-09 - Registrar detalles de factura
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir registrar los items de una factura, indicando producto o servicio,
+cantidad, precio unitario facturado, subtotal neto, porcentaje de impuesto, importe de impuesto y
+subtotal con impuesto.
+Tablas relacionadas:
+DETALLES_FACTURA, FACTURAS, PRODUCTOS_SERVICIOS.
+
+RF-10 - Registrar pagos
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir registrar comprobantes de pago asociados a facturas, indicando forma de
+pago, fecha, monto, numero de referencia y observaciones.
+Tablas relacionadas:
+COMPROBANTES_PAGO, FACTURAS, FORMAS_PAGO.
+
+RF-11 - Gestionar descuentos de factura
+Prioridad: Media
+Descripcion:
+El sistema debe permitir registrar descuentos asociados a una factura, indicando descripcion,
+porcentaje y/o monto.
+Tablas relacionadas:
+DESCUENTOS_FACTURA, FACTURAS.
+
+RF-12 - Gestionar recargos de factura
+Prioridad: Media
+Descripcion:
+El sistema debe permitir registrar recargos asociados a una factura, indicando descripcion,
+porcentaje y/o monto.
+Tablas relacionadas:
+RECARGOS_FACTURA, FACTURAS.
+
+RF-13 - Consultar reportes administrativos y comerciales
+Prioridad: Alta
+Descripcion:
+El sistema debe permitir obtener consultas y reportes sobre clientes, productos, facturas, pagos,
+ventas por periodo, facturas por estado y detalle de operaciones.
+Tablas relacionadas:
+FACTURAS, DETALLES_FACTURA, CLIENTES, PRODUCTOS_SERVICIOS, COMPROBANTES_PAGO,
+ESTADOS_FACTURA.
+
+RF-14 - Administrar usuarios y roles
+Prioridad: Media
+Descripcion:
+El sistema debe permitir registrar usuarios internos, asociarlos a roles y estados, y vincularlos
+con operaciones como la emision de facturas o registros de auditoria.
+Tablas relacionadas:
+USUARIOS, ROLES, ESTADOS_USUARIOS.
+
+RF-15 - Registrar auditoria de operaciones
+Prioridad: Media
+Descripcion:
+El sistema debe permitir registrar acciones importantes vinculadas a facturas, indicando usuario,
+accion, fecha y detalle de la operacion.
+Tablas relacionadas:
+AUDITORIA_FACTURA, FACTURAS, USUARIOS.
+
+RF-16 - Ejecutar procedimientos almacenados
+Prioridad: Media
+Descripcion:
+El sistema debe contar con procedimientos almacenados para encapsular operaciones relevantes de
+clientes, productos/servicios, facturas y reportes.
+Ubicacion relacionada:
+05_CRUD/05_Stored_Procedures.
+
+RF-17 - Validar consultas mediante scripts de prueba
+Prioridad: Media
+Descripcion:
+El sistema debe incluir scripts de validacion para comprobar que las tablas, datos, consultas,
+CRUD y procedimientos funcionen correctamente.
+Ubicacion relacionada:
+07_Pruebas_Optimizacion/Validaciones.
+
+RF-18 - Generar consultas con funciones y subconsultas
+Prioridad: Media
+Descripcion:
+El sistema debe demostrar el uso de funciones de cadena, funciones de fecha y subconsultas sobre
+las tablas reales del modelo.
+Ubicacion relacionada:
+06_Funciones_Subconsultas.
+
+
+3. Conclusion
+-------------
+
+Los requerimientos funcionales definidos permiten cubrir la necesidad principal de la PyME:
+centralizar y controlar su informacion administrativa y comercial. Estos requerimientos se
+encuentran alineados con la base BaseDeDatos_PyME, las tablas implementadas, los scripts CRUD,
+las consultas, las funciones, las subconsultas, los procedimientos y las pruebas de validacion.
