@@ -4,7 +4,8 @@ GO
 SELECT SUM(total) AS TotalFacturado
 FROM FACTURAS
 WHERE YEAR(fecha_emision) = 2025 AND MONTH(fecha_emision) = 3
-AND id_estado_factura = (SELECT id_estado_factura FROM ESTADOS_FACTURA WHERE estado = 'Pagada');;
+AND id_estado_factura = (SELECT id_estado_factura 
+FROM ESTADOS_FACTURA WHERE estado = 'Pagada');;
 
 GO
 
@@ -91,7 +92,6 @@ FROM FACTURAS f
 JOIN CLIENTES c ON f.id_cliente = c.id_cliente
 JOIN COMPROBANTES_PAGO cp ON f.id_factura = cp.id_factura
 GROUP BY c.id_cliente, c.tipo_persona, c.nombre, c.apellido, c.razon_social
-HAVING COUNT(f.id_factura) > 1
 ORDER BY DiasPromedioPago DESC;
 GO
 
@@ -119,3 +119,10 @@ JOIN CATEGORIAS_PRODUCTO c ON p.id_categoria = c.id_categoria
 GROUP BY c.nombre, p.nombre
 ORDER BY c.nombre, UnidadesVendidas DESC;
 GO
+
+SELECT 
+    numero_factura,
+    fecha_emision,
+    (SELECT estado FROM ESTADOS_FACTURA WHERE id_estado_factura = f.id_estado_factura) AS Estado
+FROM FACTURAS f
+ORDER BY fecha_emision DESC;

@@ -36,3 +36,4 @@ SET activo = 0
 WHERE nombre = 'Pendrive 64GB';
 PRINT 'Producto desactivado.';
 GO
+

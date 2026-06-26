@@ -433,7 +433,7 @@ VALUES
     (1, 4, 2, 3200.00, 6400.00, 21.00, 1344.00, 7744.00);
 
 INSERT INTO COMPROBANTES_PAGO (id_factura, id_forma_pago, fecha_pago, monto, numero_referencia, observaciones)
-VALUES (1, 1, '2025-01-15 10:35:00', 10527.00, 'PAG-001', 'Pago en efectivo');
+VALUES (1, 1, '2025-01-20 10:35:00', 10527.00, 'PAG-001', 'Pago en efectivo');
 
 -- FACTURA 2: Distribuidora del Centro, Tarjeta Crédito, Teclado (Pagada)
 INSERT INTO FACTURAS (
@@ -453,7 +453,7 @@ INSERT INTO DETALLES_FACTURA (
 VALUES (2, 2, 1, 12500.00, 12500.00, 21.00, 2625.00, 15125.00);
 
 INSERT INTO COMPROBANTES_PAGO (id_factura, id_forma_pago, fecha_pago, monto, numero_referencia, observaciones)
-VALUES (2, 2, '2025-02-05 14:25:00', 15125.00, 'TC-123456789', 'Pago con Visa');
+VALUES (2, 2, '2025-02-12 14:25:00', 15125.00, 'TC-123456789', 'Pago con Visa');
 
 -- FACTURA 3: Ana, Transferencia, Chocolates + Lámpara (Emitida, sin pago)
 INSERT INTO FACTURAS (
@@ -497,7 +497,7 @@ VALUES
     (4, 8, 1, 8900.00, 8900.00, 21.00, 1869.00, 10769.00);
 
 INSERT INTO COMPROBANTES_PAGO (id_factura, id_forma_pago, fecha_pago, monto, numero_referencia, observaciones)
-VALUES (4, 3, '2025-03-10 11:10:00', 32549.00, 'TD-987654321', 'Pago con Maestro');
+VALUES (4, 3, '2025-03-25 11:10:00', 32549.00, 'TD-987654321', 'Pago con Maestro');
 
 -- FACTURA 5: Luis, Efectivo, Remera (Pagada)
 INSERT INTO FACTURAS (
@@ -517,4 +517,4 @@ INSERT INTO DETALLES_FACTURA (
 VALUES (5, 4, 1, 3200.00, 3200.00, 21.00, 672.00, 3872.00);
 
 INSERT INTO COMPROBANTES_PAGO (id_factura, id_forma_pago, fecha_pago, monto, numero_referencia, observaciones)
-VALUES (5, 1, '2025-03-25 16:35:00', 3872.00, 'PAG-005', 'Pago en efectivo');
+VALUES (5, 1, '2025-03-27 16:35:00', 3872.00, 'PAG-005', 'Pago en efectivo');
